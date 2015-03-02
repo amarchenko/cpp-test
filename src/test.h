@@ -9,6 +9,7 @@
   #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #elif _WIN32
   // windows code goes here
+#define __PRETTY_FUNCTION__ __FUNCTION__
 #else
   // something else
 #endif

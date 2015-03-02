@@ -26,7 +26,7 @@ int** My2DAlloc(int rows, int cols) {
 }
 
 int test() {
-  std::cout << "test_16_10_two_dim_array:" << std::cout;
+  std::cout << "test_16_10_two_dim_array:" << std::endl;
 
   int ** arr = My2DAlloc(10, 10);
   for (int i = 0; i < 10; ++i) {

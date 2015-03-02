@@ -92,7 +92,7 @@ class List {
     void reverse() {
       if (!first_ || !first_->next_)
         return;
-      Node<T> *n1, *n2 = 0;
+      Node<T> *n1 = 0, *n2 = 0;
       last_ = first_;
       while (first_) {
         n1 = first_;

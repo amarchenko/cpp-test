@@ -1,3 +1,7 @@
+#ifdef _MSC_VER
+#pragma warning(disable: 4996)
+#endif
+
 #ifndef _NUM_TO_STR_H
 #define _NUM_TO_STR_H
 

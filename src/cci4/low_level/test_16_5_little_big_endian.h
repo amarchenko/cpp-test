@@ -18,7 +18,7 @@ int TestByteOrder() {
 }
 
 int test() {
-  std::cout << "test_16_5_little_big_endian:" << std::cout;
+  std::cout << "test_16_5_little_big_endian:" << std::endl;
 
   std::cout << "TestByteOrder() = " << TestByteOrder() << std::endl;
   return 1;

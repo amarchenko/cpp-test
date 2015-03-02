@@ -87,12 +87,12 @@ int test() {
 
 #ifdef __linux__
 #pragma GCC diagnostic ignored "-Wuninitialized"
-#elif _WIN32
-#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
-#endif
-
   int x = x;
   int y = y;
+#elif _WIN32
+#pragma warning(disable: 4700)
+#endif
+
 
   int arr[s];
 

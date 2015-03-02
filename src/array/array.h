@@ -37,7 +37,8 @@ int test() {
 
 int test1()
 {
-    int r = 3, c = 4, i, j, count;
+    const int r = 3;
+    int c = 4, i, j, count;
 
     int *arr[r];
     for (i=0; i<r; i++)
