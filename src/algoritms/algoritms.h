@@ -71,6 +71,7 @@
 #include "palindrom_rec.h"
 #include "palindrome.h"
 #include "permutation_of_string.h"
+#include "permutation_of_strings_characters.h"
 #include "piramid_sort.h"
 #include "pow.h"
 

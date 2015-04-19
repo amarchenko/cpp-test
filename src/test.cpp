@@ -52,44 +52,45 @@ int main(int argc, char **argv) {
   logger::LogMethodWrapper l("All test cases");
 
 // assert(algorithms::test());
-   assert(binary_tree::test());
-//  assert(cpp0x::test());
-//  assert(cracking::test());
-//  assert(cracking5::test());
-//  assert(exceptions::test());
-//  assert(facebook::test());
-//  assert(func::test());
-//  assert(hashcodes::test());
-//  assert(lambda::test());
-//  assert(language::test());
+// assert(binary_tree::test());
+// assert(cpp0x::test());
+// assert(cracking::test());
+// assert(cracking5::test());
+// assert(exceptions::test());
+// assert(facebook::test());
+// assert(func::test());
+// assert(hashcodes::test());
+// assert(lambda::test());
+// assert(language::test());
 
-//  assert(sqrt_::test());
-//  assert(mem_test::test());
-//assert(moto::test());
-//    assert(templates::test());
+// assert(sqrt_::test());
+// assert(mem_test::test());
+// assert(moto::test());
+// assert(templates::test());
 
-//  assert(overloading::test());
+// assert(overloading::test());
 
-  //  assert(patterns::test());
-//  assert(quiz::test());
-//  assert(smart_ptr::test());
-//  assert(stl::test());
-//  assert(binary_tree::test());
-//  assert(tests::test());
-//  assert(virtuals::test());
+// assert(patterns::test());
+// assert(quiz::test());
+// assert(smart_ptr::test());
+// assert(stl::test());
+// assert(binary_tree::test());
+// assert(tests::test());
+// assert(virtuals::test());
 
-//  assert(last_1::test());
-//  assert(static_::test());
+// assert(last_1::test());
+// assert(static_::test());
 
-//  assert(array::test());
-//  assert(clock_::test());
+// assert(array::test());
+// assert(clock_::test());
 
-//  assert(quicksort_cpp11::test());
+// assert(quicksort_cpp11::test());
 
-//  assert(epam::test() );
-//  assert(ms::test() );
+// assert(epam::test() );
+// assert(ms::test() );
 
-//  assert(alignment::test());
+// assert(alignment::test());
+  assert(permutation_of_strings_charcters::test());
 
   int arr[10];
   int *pa = arr;
