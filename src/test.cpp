@@ -4,6 +4,7 @@
 #include <iostream>
 #include <assert.h>
 
+#include "common/bst.h"
 #include "common/binary_tree.h"
 #include "common/linked_list.h"
 #include "common/circular_que.h"
@@ -53,6 +54,7 @@ int main(int argc, char **argv) {
 
 // assert(algorithms::test());
 // assert(binary_tree::test());
+  assert(bst::test());
 // assert(cpp0x::test());
 // assert(cracking::test());
 // assert(cracking5::test());
@@ -90,7 +92,7 @@ int main(int argc, char **argv) {
 // assert(ms::test() );
 
 // assert(alignment::test());
-  assert(permutation_of_strings_charcters::test());
+// assert(permutation_of_strings_charcters::test());
 
   int arr[10];
   int *pa = arr;
