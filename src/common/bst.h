@@ -53,7 +53,7 @@ void BST::PrintTree(Node* node) {
     }
 }
 
-static int CountNodesInRange(int begin, int end, Node* node) {
+static int CountNodesInRange(const int& begin, const int& end, Node* node) {
     if (!node) return 0;
     if (node->value_ < begin) return CountNodesInRange(begin, end, node->right_);
     if (node->value_ > end) return CountNodesInRange(begin, end, node->left_);
