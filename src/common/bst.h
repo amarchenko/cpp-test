@@ -2,61 +2,81 @@
 
 namespace bst {
 
-struct Node
-{
-    Node(int value = 0) : m_value(value), m_left(0), m_right(0) {}
-    int m_value;
-    Node* m_left;
-    Node* m_right;
+struct Node {
+    Node(int value = 0) : value_(value), left_(0), right_(0) {}
+    int value_;
+    Node* left_;
+    Node* right_;
 };
 
-class BST
-{
+class BST {
 public:
-    BST(int value = 0)
-    {
-        m_root = new Node(value);
+    BST(int value = 0){
+        root_ = new Node(value);
     }
     ~BST();
 
-    void addValue(int value);
-    void printTree();
+    Node* GetRoot();
+    void AddValue(int value);
+    void PrintTree(Node* node);
 
 private:
-    void insertNode(Node* treeNode, Node* newNode);
-    Node* m_root;
+    Node* InsertNode(Node* treeNode, int value);
+    Node* root_;
 };
 
-void BST::addValue(int value)
-{
-    Node* newNode = new Node(value);
-    insertNode(m_root, newNode);
+Node* BST::GetRoot() {
+    return root_;
 }
 
-void BST::insertNode(Node* treeNode, Node* newNode)
-{
-    if (treeNode == 0)
-        treeNode = newNode;
-    else if (treeNode->m_value > newNode->m_value)
-        insertNode(treeNode->m_left, newNode);
+void BST::AddValue(int value) {
+    InsertNode(root_, value);
+}
+
+Node* BST::InsertNode(Node* treeNode, int value) {
+    if (!treeNode)
+        return new Node(value);
+    else if (treeNode->value_ > value)
+        treeNode->left_ = InsertNode(treeNode->left_, value);
     else
-        insertNode(treeNode->m_right, newNode);
+        treeNode->right_ = InsertNode(treeNode->right_, value);
+    return treeNode;
 }
 
-void BST::printTree()
-{
-    std::cout << "Root: " << m_root->m_value << std::endl;
-    std::cout << "Left: " << m_root->m_left->m_value << std::endl;
-    std::cout << "Right: " << m_root->m_right->m_value << std::endl;
+void BST::PrintTree(Node* node) {
+    if (node) {
+        std::cout << "Node value: " << node->value_ << std::endl;
+        std::cout << "Going left ";
+        PrintTree(node->left_);
+        std::cout << "Going Right ";
+        PrintTree(node->right_);
+    }
 }
 
-int test()
-{
+static int CountNodesInRange(int begin, int end, Node* node) {
+    if (!node) return 0;
+    if (node->value_ < begin) return CountNodesInRange(begin, end, node->right_);
+    if (node->value_ > end) return CountNodesInRange(begin, end, node->left_);
+    if (node->value_ >= begin && node->value_) {
+        return CountNodesInRange(begin, end, node->right_) +
+            CountNodesInRange(begin, end, node->left_) +
+            1;
+    }
+}
+
+int test() {
     BST* tree = new BST(7);
-    tree->addValue(3);
-    tree->addValue(45);
+    tree->AddValue(3);
+    tree->AddValue(8);
+    tree->AddValue(15);
+    tree->AddValue(20);
+
+    //tree->PrintTree(tree->GetRoot());
     
-    //tree->printTree();
+    std::cout << "Nodes in range [7;15] -> " <<
+        CountNodesInRange(7, 15, tree->GetRoot()) <<
+        std::endl;
+
     return 1;
 }
 
