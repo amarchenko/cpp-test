@@ -11,7 +11,7 @@ struct Node {
 
 class BST {
 public:
-    BST(int value = 0){
+    BST(int value = 0) {
         root_ = new Node(value);
     }
     ~BST();

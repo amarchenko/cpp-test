@@ -8,6 +8,7 @@
 #include "common/binary_tree.h"
 #include "common/linked_list.h"
 #include "common/circular_que.h"
+#include "common/generate_strings.h"
 #include "common/node.h"
 
 #include "algoritms/algoritms.h"
@@ -54,7 +55,7 @@ int main(int argc, char **argv) {
 
 // assert(algorithms::test());
 // assert(binary_tree::test());
-  assert(bst::test());
+// assert(bst::test());
 // assert(cpp0x::test());
 // assert(cracking::test());
 // assert(cracking5::test());
@@ -93,6 +94,8 @@ int main(int argc, char **argv) {
 
 // assert(alignment::test());
 // assert(permutation_of_strings_charcters::test());
+
+  assert(generate_strings::test());
 
   int arr[10];
   int *pa = arr;
