@@ -18,7 +18,7 @@
 
 namespace generate_strings {
 
-void ReplaceByZerosOnes(std::string str, unsigned int pos) {
+void ReplaceByZerosOnes(const std::string& str, unsigned int pos) {
 
     if (pos == str.size()) {
         std::cout << str << std::endl;
@@ -35,9 +35,14 @@ void ReplaceByZerosOnes(std::string str, unsigned int pos) {
     }
 }
 
+/* Default arguments are prohibited by Google code-style */
+void ReplaceByZerosOnes(const std::string& str) {
+    ReplaceByZerosOnes(str, 0);
+}
+
 int test() {
     std::string test = "abc?def?gh?";
-    ReplaceByZerosOnes(test, 0);
+    ReplaceByZerosOnes(test);
     return 1;
 }
 
