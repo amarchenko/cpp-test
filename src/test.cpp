@@ -7,6 +7,7 @@
 #include "common/bst.h"
 #include "common/binary_tree.h"
 #include "common/linked_list.h"
+#include "common/longest_common_subsequence.h"
 #include "common/circular_que.h"
 #include "common/generate_strings.h"
 #include "common/node.h"
@@ -94,8 +95,9 @@ int main(int argc, char **argv) {
 
 // assert(alignment::test());
 // assert(permutation_of_strings_charcters::test());
+// assert(generate_strings::test());
 
-  assert(generate_strings::test());
+  assert(longest_common_subsequence::test());
 
   int arr[10];
   int *pa = arr;

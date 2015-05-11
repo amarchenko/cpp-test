@@ -1,4 +1,7 @@
-﻿#include <iostream>
+﻿#ifndef BST_H_
+#define BST_H_
+
+#include <iostream>
 
 namespace bst {
 
@@ -81,3 +84,5 @@ int test() {
 }
 
 }
+
+#endif // BST_H_ */
