@@ -4,6 +4,9 @@
 #include <iostream>
 #include <assert.h>
 
+#include "bits/count_set_bits_in_an_integer.h"
+#include "bits/is_power_of_two.h"
+
 #include "common/bst.h"
 #include "common/binary_tree.h"
 #include "common/linked_list.h"
@@ -97,7 +100,10 @@ int main(int argc, char **argv) {
 // assert(permutation_of_strings_charcters::test());
 // assert(generate_strings::test());
 
-  assert(longest_common_subsequence::test());
+// assert(longest_common_subsequence::test());
+
+  assert(count_set_bits_in_an_integer::test());
+  assert(is_power_of_two::test());
 
   int arr[10];
   int *pa = arr;

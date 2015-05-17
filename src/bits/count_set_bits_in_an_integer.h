@@ -21,14 +21,6 @@ int countSetBits(unsigned int n) {
   return count;
 }
 
-/* Program to test function countSetBits */
-int test1() {
-  int i = 9;
-  printf("%d", countSetBits(i));
-  getchar();
-  return 1;
-}
-
 // Brian Kernighan’s Algorithm:
 
 /* Function to get no of set bits in binary
@@ -40,6 +32,13 @@ int countSetBits2(int n) {
     count++;
   }
   return count;
+}
+
+/* Program to test function countSetBits */
+int test() {
+  unsigned int i = 4096;
+  printf("Count set bit in %u - %d\n", i, countSetBits2(i));
+  return 1;
 }
 
 /* Program to test function countSetBits */
