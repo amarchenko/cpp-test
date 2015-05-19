@@ -46,7 +46,7 @@
 
 #include "last/last_1.h"
 #include "epam/epam.h"
-//#include "epam/google.h"
+#include "epam/google2.h"
 
 #include "ms/ms.h"
 #include "memory/alignment.h"
@@ -59,7 +59,7 @@ int main(int argc, char **argv) {
 
 // assert(algorithms::test());
 // assert(binary_tree::test());
-// assert(bst::test());
+assert(bst::test());
 // assert(cpp0x::test());
 // assert(cracking::test());
 // assert(cracking5::test());
@@ -103,7 +103,7 @@ int main(int argc, char **argv) {
 // assert(longest_common_subsequence::test());
 
   assert(count_set_bits_in_an_integer::test());
-  assert(is_power_of_two::test());
+  // assert(is_power_of_two::test());
 
   int arr[10];
   int *pa = arr;

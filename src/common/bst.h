@@ -2,14 +2,15 @@
 #define BST_H_
 
 #include <iostream>
+#include <queue>
 
 namespace bst {
 
 struct Node {
-    Node(int value = 0) : value_(value), left_(0), right_(0) {}
-    int value_;
-    Node* left_;
-    Node* right_;
+    Node(int value = 0) : value(value), left(0), right(0) {}
+    int value;
+    Node* left;
+    Node* right;
 };
 
 class BST {
@@ -39,31 +40,59 @@ void BST::AddValue(int value) {
 Node* BST::InsertNode(Node* treeNode, int value) {
     if (!treeNode)
         return new Node(value);
-    else if (treeNode->value_ > value)
-        treeNode->left_ = InsertNode(treeNode->left_, value);
+    else if (treeNode->value > value)
+        treeNode->left = InsertNode(treeNode->left, value);
     else
-        treeNode->right_ = InsertNode(treeNode->right_, value);
+        treeNode->right = InsertNode(treeNode->right, value);
     return treeNode;
 }
 
 void BST::PrintTree(Node* node) {
     if (node) {
-        std::cout << "Node value: " << node->value_ << std::endl;
+        std::cout << "Node value: " << node->value << std::endl;
         std::cout << "Going left ";
-        PrintTree(node->left_);
+        PrintTree(node->left);
         std::cout << "Going Right ";
-        PrintTree(node->right_);
+        PrintTree(node->right);
     }
 }
 
 static int CountNodesInRange(const int& begin, const int& end, Node* node) {
     if (!node) return 0;
-    if (node->value_ < begin) return CountNodesInRange(begin, end, node->right_);
-    if (node->value_ > end) return CountNodesInRange(begin, end, node->left_);
-    if (node->value_ >= begin && node->value_) {
-        return CountNodesInRange(begin, end, node->right_) +
-            CountNodesInRange(begin, end, node->left_) +
+    if (node->value < begin) return CountNodesInRange(begin, end, node->right);
+    if (node->value > end) return CountNodesInRange(begin, end, node->left);
+    if (node->value >= begin && node->value) {
+        return CountNodesInRange(begin, end, node->right) +
+            CountNodesInRange(begin, end, node->left) +
             1;
+    }
+}
+
+void AssignQueue(std::queue<Node*>& dest, std::queue<Node*>& src) {
+    while (!src.empty()) {
+        Node* node = src.front();
+        dest.push(node);
+        src.pop();
+    }
+}
+
+void PrintTreeByLevel(Node* root) {
+    if (!root) return;
+    std::queue<Node*> current_level, next_level;
+    current_level.push(root);
+    Node* current_node;
+    while (!current_level.empty()) {
+        current_node = current_level.front();
+        current_level.pop();
+        std::cout << current_node->value << " ";
+
+        if (current_node->left) next_level.push(current_node->left);
+        if (current_node->right) next_level.push(current_node->right);
+
+        if (current_level.empty()) {
+            std::cout << std::endl;
+            AssignQueue(current_level, next_level);
+        }
     }
 }
 
@@ -75,10 +104,12 @@ int test() {
     tree->AddValue(20);
 
     //tree->PrintTree(tree->GetRoot());
-    
+
     std::cout << "Nodes in range [7;15] -> " <<
         CountNodesInRange(7, 15, tree->GetRoot()) <<
         std::endl;
+
+    PrintTreeByLevel(tree->GetRoot());
 
     return 1;
 }

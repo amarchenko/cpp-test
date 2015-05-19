@@ -20,9 +20,23 @@
 //bd
 //c
 
+#include <iostream>
+#include <queue>
+
+namespace google2 {
+
+struct TreeNode {
+  TreeNode(int i)
+      : data(i),
+        left(0),
+        right(0) {
+  }
+  int data;
+  TreeNode * left;
+  TreeNode * right;
+};
 
 void swapQueWithSrc(std::queue<TreeNode*>& dest, std::queue<TreeNode*>& src) {
-   dest.clear();
    while(!src.empty()) {
        TreeNode* treeNode = src.front();
         dest.push(treeNode);
@@ -40,16 +54,17 @@ void printLevelOrder(TreeNode* root) {
        TreeNode* currentNode = currentLevel.front();
        currentLevel.pop();
        if (currentNode) {
-         std::cout << currentNode->data << “ “;
-         nextLevel.push(currenttNode->left);
-         nextLevel.push(currenttNode->right);
+         std::cout << currentNode->data << " ";
+         nextLevel.push(currentNode->left);
+         nextLevel.push(currentNode->right);
        }
        if (currentLevel.empty()) {
-          std::cout << ‘\n’;
+          std::cout << std::endl;
           swapQueWithSrc(currentLevel, nextLevel);
        }
    }
 }
 
+}
 
 #endif /* GOOGLE2_H_ */
