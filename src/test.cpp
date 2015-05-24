@@ -98,12 +98,13 @@ assert(bst::test());
 
 // assert(alignment::test());
 // assert(permutation_of_strings_charcters::test());
-// assert(generate_strings::test());
+  //assert(generate_strings::test());
 
-// assert(longest_common_subsequence::test());
+  //assert(longest_common_subsequence::test());
 
-  assert(count_set_bits_in_an_integer::test());
-  // assert(is_power_of_two::test());
+  //assert(count_set_bits_in_an_integer::test());
+  //assert(is_power_of_two::test());
+  assert(reverse_char_array::test());
 
   int arr[10];
   int *pa = arr;
