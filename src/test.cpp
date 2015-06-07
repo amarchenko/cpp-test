@@ -14,6 +14,7 @@
 #include "common/circular_que.h"
 #include "common/generate_strings.h"
 #include "common/node.h"
+#include "common/sort_by_numbers_frequency.h"
 
 #include "algoritms/algoritms.h"
 #include "array/array.h"
@@ -98,13 +99,15 @@ assert(bst::test());
 
 // assert(alignment::test());
 // assert(permutation_of_strings_charcters::test());
-  //assert(generate_strings::test());
+// assert(generate_strings::test());
 
-  //assert(longest_common_subsequence::test());
+// assert(longest_common_subsequence::test());
 
-  //assert(count_set_bits_in_an_integer::test());
-  //assert(is_power_of_two::test());
-  assert(reverse_char_array::test());
+// assert(count_set_bits_in_an_integer::test());
+// assert(is_power_of_two::test());
+// assert(reverse_char_array::test());
+
+  assert(sort_by_numbers_frequency::test());
 
   int arr[10];
   int *pa = arr;
