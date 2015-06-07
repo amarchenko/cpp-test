@@ -26,7 +26,7 @@ namespace exception_in_desctructor
         ~B() { cout << "In destructor of B" << endl; }
     };
 
-    void  test() {
+    int  test() {
         set_terminate(my_terminate);
         try {
             cout << "In try block" << endl;
@@ -42,5 +42,7 @@ namespace exception_in_desctructor
         }
 
         cout << "Resume execution of main()" << endl;
+
+        return 1;
     }
 }
