@@ -6,7 +6,7 @@ using namespace std;
 
 class Solution {
 public:
-    {
+    int reverse(int num) {
         if (x == 0) {
             return 0;
         } else {
