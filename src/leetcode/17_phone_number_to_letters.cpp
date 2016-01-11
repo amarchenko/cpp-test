@@ -22,7 +22,6 @@ public:
 private:
     void permutations(string& digits, int& length, int current,
                     string permut) {
-
     if (current == length) {
       result.push_back(permut);
       return;
