@@ -1,6 +1,7 @@
 #include <iostream>
 #include <memory>
 #include <queue>
+#include <stack>
 
 using namespace std;
 
@@ -25,6 +26,40 @@ TreeNode* InsertNode(TreeNode* tree_node, int value) {
   else
     tree_node->right = InsertNode(tree_node->right, value);
   return tree_node;
+}
+
+void InorderIterative(TreeNode* root) {
+  unique_ptr< stack<TreeNode*> > st(new stack<TreeNode*>());
+  TreeNode* current = root;
+
+  while(current || !st->empty()) {
+    if (current) {
+      st->push(current);
+      current = current->left;
+    } else {
+      current = st->top();
+      st->pop();
+      cout << "Value: " << current->value << endl;
+      current = current->right;
+    }
+  }
+}
+
+void PreorderIterative(TreeNode* root) {
+  unique_ptr< stack<TreeNode*> > st(new stack<TreeNode*>());
+  TreeNode* current = root;
+
+  while(current || !st->empty()) {
+    if (current) {
+      cout << "Value: " << current->value << endl;
+      st->push(current);
+      current = current->left;
+    } else {
+      current = st->top();
+      st->pop();
+      current = current->right;
+    }
+  }
 }
 
 void PrintByLevelOrder(TreeNode *root) {
@@ -73,6 +108,20 @@ bool ValidateBST(TreeNode* root) {
   return ValidateBST(root->left) && ValidateBST(root->right);
 }
 
+int KthSmallestValue(TreeNode* root, int& k) {
+  if (root->left) {
+    KthSmallestValue(root->left, k);
+  }
+  --k;
+  if (k == 0) {
+    return root->value;
+  }
+  if (root->right) {
+    KthSmallestValue(root->right, k);
+  }
+  return -1;
+}
+
 int main() {
   unique_ptr<TreeNode> root(new TreeNode(4));
   InsertNode(root.get(), 2);
@@ -86,6 +135,13 @@ int main() {
   PrintByLevelOrder(root.get());
   cout << "LCA: " << FindLCA(root.get(), 4, 5)->value << endl;
   cout << "Is BST? " << ValidateBST(root.get()) <<endl;
+
+  // cout << "InorderIterative : " << endl;
+  // InorderIterative(root.get());
+  // cout << "PreorderIterative : " << endl;
+  // PreorderIterative(root.get());
+  int k = 6;
+  KthSmallestValue(root.get(), k);
 
   return 0;
 }
