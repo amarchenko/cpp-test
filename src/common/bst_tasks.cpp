@@ -1,7 +1,9 @@
+#include <climits>
 #include <iostream>
 #include <memory>
 #include <queue>
 #include <stack>
+#include <vector>
 
 using namespace std;
 
@@ -122,6 +124,34 @@ int KthSmallestValue(TreeNode* root, int& k) {
   return -1;
 }
 
+void Serialize(TreeNode* root, vector<int>& result) {
+  if (!root) {
+    return;
+  }
+  result.push_back(root->value);
+  Serialize(root->left, result);
+  Serialize(root->right, result);
+}
+
+TreeNode* DeserializeHelper(const vector<int>& input, int& index,
+                            int min, int max) {
+  TreeNode* root = nullptr;
+  if (index == input.size()) {
+    return root;
+  } else if (min < input[index] && input[index] < max) {
+    root = new TreeNode(input[index]);
+    ++index;
+    root->left = DeserializeHelper(input, index, min, root->value);
+    root->right = DeserializeHelper(input, index, root->value, max);
+  }
+  return root;
+}
+
+TreeNode* Deserialize(const vector<int>& input) {
+  int i = 0;
+  return DeserializeHelper(input, i, INT_MIN, INT_MAX);
+}
+
 int main() {
   unique_ptr<TreeNode> root(new TreeNode(4));
   InsertNode(root.get(), 2);
@@ -140,8 +170,21 @@ int main() {
   // InorderIterative(root.get());
   // cout << "PreorderIterative : " << endl;
   // PreorderIterative(root.get());
-  int k = 6;
-  KthSmallestValue(root.get(), k);
+  int k = 3;
+  cout << k << " smallest value: " << KthSmallestValue(root.get(), k) << endl;
+
+  cout << "Serializing..." << endl;
+  vector<int> ser;
+  Serialize(root.get(), ser);
+  for (auto& s : ser) {
+    cout << s << " ";
+
+  }
+  cout << endl;
+
+  TreeNode* des_root = nullptr;
+  des_root = Deserialize(ser);
+  PrintByLevelOrder(des_root);
 
   return 0;
 }
